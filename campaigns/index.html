@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ads Management - Phantasma</title>
+  <!-- Private tool: kept out of search engines (also Disallow in /robots.txt) -->
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="description" content="Private Ads Management prototype (mock data)." />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+
+  <!-- Same fonts as the main site; Noto Georgian is added because the tool has a Georgian toggle -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..700,0..100,0..1&amp;family=Noto+Sans+Georgian:wght@400;500;600&amp;family=Noto+Serif+Georgian:wght@500;600&amp;display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..700,0..100,0..1&amp;display=swap" /></noscript>
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500&amp;display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500&amp;display=swap" /></noscript>
+
+  <!-- Site tokens (palette Signal, spacing, type), then the tool's own styles -->
+  <link rel="stylesheet" href="../styles.css?v=20261118d" />
+  <link rel="stylesheet" href="./app.css?v=20261118a" />
+  <!-- Restore the desktop sidebar state before first paint (no flash) -->
+  <script>try { if (localStorage.getItem('ads_side') === 'collapsed') document.documentElement.classList.add('ads-side-collapsed'); } catch (e) { /* ignore */ }</script>
+</head>
+<!-- data-chat = this page's service for the shared Messages + Feedback window (../career.js, 11 Nov 2026) -->
+<body class="ads-body" data-chat="ads">
+  <a class="skip-link" href="#ads-main" data-i18n="common.skip">Skip to content</a>
+
+  <!-- Login gate: shown until a Supabase session is confirmed. Fails closed. -->
+  <div id="ads-gate" class="ads-gate" aria-live="polite">
+    <div class="ads-gatecard"><p>Loading...</p></div>
+  </div>
+
+  <div id="ads-app" hidden>
+    <div id="ads-shell" class="ads-shell">
+      <header class="ads-topbar">
+        <button type="button" id="ads-menu-btn" class="ads-iconbtn ads-topbar__menu" aria-expanded="false" aria-controls="ads-sidebar" data-i18n-aria="top.menu" aria-label="Menu">&#9776;</button>
+        <!-- Desktop only (>=1024px): collapse / expand the sidebar column -->
+        <button type="button" id="ads-side-toggle" class="ads-iconbtn ads-topbar__side" aria-expanded="true" aria-controls="ads-sidebar" aria-label="Collapse menu">&#9776;</button>
+        <span class="ads-topbar__brand" data-i18n="app.name">Ads Management</span>
+        <!-- Mode (owner, 18 Nov 2026): a small icon; hover, keyboard focus or tap shows what it means -->
+        <span class="ads-tipwrap ads-modewrap" id="ads-modewrap">
+          <button type="button" id="ads-badge" class="ads-modeicon" aria-describedby="ads-badge-tip" aria-expanded="false" aria-label="Mock data"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="7.5" x2="12" y2="13"/><line x1="12" y1="16.5" x2="12.01" y2="16.5"/></svg></button>
+          <span class="ads-tip ads-tip--start" id="ads-badge-tip" role="tooltip"></span>
+        </span>
+        <div class="ads-topbar__ctx">
+          <label class="visually-hidden" for="ads-biz" data-i18n="top.business">Company</label>
+          <select id="ads-biz" class="ads-input ads-input--bar"></select>
+          <label class="visually-hidden" for="ads-account" data-i18n="top.account">Ad account</label>
+          <select id="ads-account" class="ads-input ads-input--bar"></select>
+        </div>
+        <div class="ads-topbar__end">
+          <!-- Opens the chat window on its Feedback view (signed in); without the window the e-mail link works. -->
+          <a id="ads-feedback" class="ads-btn ads-btn--ghost ads-btn--small" href="mailto:consult@solvephantasma.com?subject=Ads%20Management%20feedback" data-chat-open="feedback" data-i18n="top.feedback">Send feedback</a>
+          <button type="button" id="ads-lang" class="ads-btn ads-btn--ghost ads-btn--small" data-i18n-aria="top.lang" aria-label="Language">ქართული</button>
+          <button type="button" id="ads-ai-btn" class="ads-btn ads-btn--ghost ads-btn--small" aria-expanded="false" aria-controls="ads-assistant" data-i18n="ai.title">AI Assistant</button>
+          <div class="ads-user">
+            <button type="button" id="ads-user-btn" class="ads-btn ads-btn--ghost ads-btn--small" aria-expanded="false" aria-controls="ads-user-menu" data-i18n-aria="top.user" aria-label="Account menu">&#9786;<span class="ads-user__email" id="ads-user-email"></span></button>
+            <div id="ads-user-menu" class="ads-user__menu" hidden>
+              <a class="ads-menu__item" href="../index.html" data-i18n="menu.back">Back to site</a>
+              <button type="button" id="ads-mode" class="ads-menu__item">Use live backend (dry-run)</button>
+              <!-- Sample mode only (hidden in live mode by app.js): the tool as a new user sees it (11 Nov 2026) -->
+              <button type="button" id="ads-newuser" class="ads-menu__item" data-i18n="menu.newUser">Try the first visit (sample)</button>
+              <button type="button" id="ads-reset" class="ads-menu__item" data-i18n="menu.reset">Reset demo data</button>
+              <button type="button" id="ads-signout" class="ads-menu__item" data-i18n="menu.signout">Sign out</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <aside id="ads-sidebar" class="ads-sidebar" aria-label="Main">
+        <nav id="ads-nav" data-i18n-aria="nav.label" aria-label="Main navigation"><ul id="ads-nav-list" class="ads-nav"></ul></nav>
+        <!-- Way back to the platform (owner, 5 Nov 2026 / D-02) -->
+        <nav class="ads-sidebar__out" data-i18n-aria="nav.outLabel" aria-label="Solve Phantasma">
+          <a class="ads-nav__link" href="../services.html" data-i18n="nav.services">← All services</a>
+          <a class="ads-nav__link" href="../index.html" data-i18n="nav.home">Home page</a>
+        </nav>
+      </aside>
+
+      <main id="ads-main" class="ads-main" tabindex="-1"></main>
+    </div>
+
+    <aside id="ads-assistant" class="ads-drawer" role="dialog" aria-modal="true" aria-labelledby="ads-ai-title"></aside>
+    <div id="ads-scrim" class="ads-scrim" hidden></div>
+    <div id="ads-toasts" class="ads-toasts" role="status" aria-live="polite" aria-atomic="false"></div>
+  </div>
+
+  <noscript><p class="ads-gatecard">This tool needs JavaScript.</p></noscript>
+
+  <!-- supabase-js (UMD), same version as the main site; only used to read the session -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.58.0/dist/umd/supabase.js"></script>
+  <script src="./i18n.js?v=20261118a"></script>
+  <!-- Reads stock files (Excel / CSV); loads SheetJS from its CDN only when a file is used -->
+  <script src="./stock-import.js?v=20261106d"></script>
+  <script src="./knowledge-import.js?v=20261115a"></script>
+  <script src="./api.js?v=20261117a"></script>
+  <script src="./logos.js?v=20261115a"></script>
+  <script src="./app.js?v=20261118a"></script>
+  <!-- The website's Messages + Feedback window (files too); reaches Supabase through the client app.js hands over -->
+  <script src="../career.js?v=20261111d"></script>
+</body>
+</html>
