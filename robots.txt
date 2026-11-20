@@ -1,0 +1,3 @@
+# Marketplenum: closed to search engines until the real front page is ready (MKT-03).
+User-agent: *
+Disallow: /

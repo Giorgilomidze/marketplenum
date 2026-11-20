@@ -1,0 +1,4 @@
+# Local only
+**/_harness*
+.claude/settings.local.json
+node_modules/
