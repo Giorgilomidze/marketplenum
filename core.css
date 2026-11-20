@@ -1,0 +1,153 @@
+/* =========================================================================
+   Marketplenum — the site's own styles (20 Nov 2026, C5 Oversight).
+
+   Everything shared comes from styles.css: tokens, reset, buttons, the login
+   dialog (.auth-modal*), service tiles (.service-grid / .service-tile*),
+   the footer (.site-footer*), .lang-switch, .page-grid. styles.css here is a
+   RELEASED COPY of solvephantasma.com's stylesheet (the test site) — never
+   edit it in this repo. Sizes only through the tokens; check every change at
+   1535 x 864 and 375 px (layout standard).
+
+   1. Header        2. Front page        3. Account page        4. Small screens
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   1. Header — name on the left, language switch + Log in / My account right
+   ------------------------------------------------------------------------- */
+.mp-header {
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg);
+}
+.mp-header__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+}
+.mp-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-right: auto;
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--type-h3);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.mp-brand img { width: var(--space-6); height: var(--space-6); }
+.mp-brand:focus-visible { outline: 2px solid var(--accent-deep); outline-offset: 4px; border-radius: var(--radius-sm); }
+
+/* Log in / My account: hidden (keeping its width) until the sign-in state is
+   known, so it does not flash the wrong label. */
+.mp-header .js-auth { white-space: nowrap; }
+.mp-header .js-auth:not([data-state]) { visibility: hidden; }
+
+/* -------------------------------------------------------------------------
+   2. Front page
+   ------------------------------------------------------------------------- */
+.mp-hero {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-5);
+  row-gap: var(--space-3);
+}
+.mp-hero h1 {
+  margin: 0;
+  max-width: 24ch;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--type-h1);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+.mp-hero__lead {
+  margin: 0;
+  max-width: 62ch;
+  font-size: var(--type-body-lg);
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.mp-services { padding-bottom: var(--space-5); }
+/* Two services: two columns from tablet width, never stretched over the whole
+   1480 px content width. */
+.mp-services .service-grid { max-width: 960px; }
+@media (min-width: 768px) {
+  .mp-services .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.mp-tile__badges { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: auto; }
+.mp-tile__badges .service-tile__badge { margin-top: 0; }
+
+.mp-access { padding-bottom: var(--space-6); }
+.mp-access p {
+  margin: 0;
+  max-width: 62ch;
+  font-size: var(--type-body-sm);
+  color: var(--ink-soft);
+}
+.mp-access a { color: var(--accent-deep); }
+
+/* -------------------------------------------------------------------------
+   3. Account page
+   ------------------------------------------------------------------------- */
+.mp-account {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+  row-gap: var(--space-5);
+}
+.mp-account h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--type-h2);
+  line-height: 1.2;
+}
+/* One view at a time (core.js); author display rules would beat the hidden attribute. */
+.mp-account [data-view][hidden] { display: none; }
+.mp-stack { display: grid; gap: var(--space-5); }
+.mp-panel {
+  max-width: 560px;
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+}
+.mp-panel h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--type-h3);
+  line-height: 1.25;
+}
+.mp-panel p { margin: 0; font-size: var(--type-body-sm); line-height: 1.5; color: var(--ink-soft); }
+.mp-panel p strong { color: var(--ink); }
+.mp-panel--danger { border-color: var(--act); }
+.mp-form { display: grid; gap: var(--space-2); }
+.mp-form .btn { justify-self: start; margin-top: var(--space-1); }
+.mp-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+.mp-check { display: flex; gap: var(--space-2); align-items: flex-start; font-size: var(--type-body-sm); }
+.mp-check input { margin-top: 3px; accent-color: var(--act); }
+.mp-status { margin: 0; font-size: var(--type-body-sm); }
+.mp-status[data-kind="error"] { color: var(--act); }
+.mp-status[data-kind="ok"] { color: var(--ok); }
+.btn.mp-btn-danger { background: var(--act); border-color: var(--act); color: var(--bg); }
+.btn.mp-btn-danger:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* -------------------------------------------------------------------------
+   4. Small screens
+   ------------------------------------------------------------------------- */
+@media (max-width: 599px) {
+  .mp-header__row { gap: var(--space-3); }
+  .mp-brand { font-size: var(--type-body); }
+  .mp-brand img { width: var(--space-5); height: var(--space-5); }
+  .mp-hero { padding-top: var(--space-5); }
+  .mp-hero h1 { font-size: var(--type-h2); }
+  /* Phones: one tile per row (the texts here are longer than on the test site). */
+  .mp-services .service-grid { grid-template-columns: minmax(0, 1fr); }
+  .mp-panel { padding: var(--space-4); }
+}

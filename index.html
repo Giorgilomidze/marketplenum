@@ -1,39 +1,146 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Marketplenum</title>
-<meta name="description" content="Marketplenum: Advertising platform and Marketplace automation. Opening soon.">
-<!-- Placeholder (20 Nov 2026). Replaced by the real front page in MKT-03; kept out of search engines until then. -->
-<meta name="robots" content="noindex">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&display=swap">
-<style>
-  /* Phantasma "Signal" palette; sizes on the 4px scale. */
-  :root { --bg: #f7f5f2; --ink: #14213d; --muted: #5a6275; --accent: #f26b1d; --accent-deep: #b8420a; --rule: #ddd8cf; }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--ink);
-         font: 16px/1.55 "Segoe UI", system-ui, -apple-system, sans-serif; }
-  main { max-width: 640px; margin: 0 auto; padding: 48px 16px 32px; }
-  .mark { display: block; width: 40px; height: 40px; }
-  h1 { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 2.25rem; line-height: 1.15; margin: 16px 0 8px; }
-  .lead { font-size: 1.125rem; margin: 0 0 12px; }
-  .soon { display: inline-block; padding: 4px 12px; border-radius: 999px; background: var(--accent); color: var(--ink);
-          font-weight: 600; font-size: .875rem; }
-  footer { max-width: 640px; margin: 0 auto; padding: 16px; border-top: 1px solid var(--rule); color: var(--muted); font-size: .875rem; }
-  a { color: var(--accent-deep); }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#f7f5f2" />
+  <title>Marketplenum — Advertising platform and Marketplace automation</title>
+  <meta name="description" content="Marketplenum: plan social media posts and ads with your team, and keep your Amazon seller data in one place. Invite-only beta." />
+  <!-- Kept out of search engines until the apps are live here (robots.txt too). -->
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="https://marketplenum.com/" />
+  <link rel="alternate" hreflang="en" href="https://marketplenum.com/" />
+  <link rel="alternate" hreflang="ka" href="https://marketplenum.com/index.ka.html" />
+  <link rel="alternate" hreflang="x-default" href="https://marketplenum.com/" />
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+
+  <!-- Fonts: the same as solvephantasma.com (Fraunces + General Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..700,0..100,0..1&display=swap" />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500&display=swap" />
+
+  <!-- styles.css = released copy from solvephantasma.com (never edit here); core.css = this site's own -->
+  <link rel="stylesheet" href="./styles.css?v=20261118d" />
+  <link rel="stylesheet" href="./core.css?v=20261120b" />
 </head>
 <body>
-<main>
-  <img class="mark" src="favicon.svg" alt="" width="40" height="40">
-  <h1>Marketplenum</h1>
-  <p class="lead">Advertising platform and Marketplace automation.</p>
-  <span class="soon">Opening soon</span>
-</main>
-<footer>Contact: <a href="mailto:consult@solvephantasma.com">consult@solvephantasma.com</a></footer>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="mp-header">
+    <div class="page-grid">
+      <div class="mp-header__row">
+        <a href="./" class="mp-brand" aria-current="page"><img src="./favicon.svg" alt="" width="32" height="32" />Marketplenum</a>
+        <div class="lang-switch" aria-label="Language">
+          <a href="./" hreflang="en" lang="en" aria-label="English" aria-current="page">
+            <svg viewBox="0 0 60 30" aria-hidden="true" focusable="false"><clipPath id="uk-c"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#uk-c)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></svg>
+            <span>EN</span>
+          </a>
+          <a href="./index.ka.html" hreflang="ka" lang="ka" aria-label="ქართული">
+            <svg viewBox="0 0 300 200" aria-hidden="true" focusable="false"><rect width="300" height="200" fill="#fff"/><path d="M130 0h40v200h-40zM0 80h300v40H0z" fill="#e8112d"/><g fill="#e8112d"><path id="ge-c" d="M59 30h12v14h14v12H71v14H59V56H45V44h14z"/><use href="#ge-c" x="170"/><use href="#ge-c" y="100"/><use href="#ge-c" x="170" y="100"/></g></svg>
+            <span>KA</span>
+          </a>
+        </div>
+        <!-- Signed out: opens the login dialog. Signed in: goes to the account page (core.js). -->
+        <a href="./account.html" class="btn btn-primary btn-sm js-auth" data-label-login="Log in" data-label-account="My account">Log in</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="mp-hero page-grid" aria-labelledby="hero-h">
+      <h1 id="hero-h">Advertising and marketplace tools, in one account.</h1>
+      <p class="mp-hero__lead">Plan social media posts and ads with your team, and keep your Amazon seller data in one place.</p>
+    </section>
+
+    <section class="mp-services page-grid" aria-labelledby="services-h">
+      <h2 id="services-h" class="visually-hidden">Services</h2>
+      <!-- Until a service is released here it is a "soon" tile without a link.
+           At its release it gets: <a class="service-tile__link" href="./campaigns/" data-needs-login ...>
+           (signed out = the login opens first, then the service; core.js). -->
+      <ul class="service-grid" role="list">
+        <li>
+          <div class="service-tile service-tile--soon" data-service="ads">
+            <span class="service-tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg></span>
+            <span class="service-tile__title">Advertising platform</span>
+            <span class="service-tile__text">Create, plan and publish social media posts and ads, with help from AI.</span>
+            <span class="mp-tile__badges"><span class="service-tile__badge">Private beta</span><span class="service-tile__badge">Opening soon</span></span>
+          </div>
+        </li>
+        <li>
+          <div class="service-tile service-tile--soon" data-service="ecommerce">
+            <span class="service-tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg></span>
+            <span class="service-tile__title">Marketplace automation</span>
+            <span class="service-tile__text">Amazon seller and vendor data in one place: products, FBA stock, sales, finance and A+ content, for several accounts.</span>
+            <span class="mp-tile__badges"><span class="service-tile__badge">Private beta</span><span class="service-tile__badge">Opening soon</span></span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="mp-access page-grid" aria-label="Access">
+      <p>Both services are invite-only during the beta. Your solvephantasma.com account works here too. To ask for access, write to <a href="mailto:consult@solvephantasma.com">consult@solvephantasma.com</a>.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-grid site-footer__inner">
+      <hr class="rule rule--footer" />
+      <address class="site-footer__contact" aria-label="Contact">
+        <span>Individual entrepreneur Giorgi Lomidze, ID code 01027063874</span>
+        <span>Georgia, Tbilisi, Jiuli Shartava 5</span>
+        <a class="link-quiet" href="tel:+995599372600">+995 599 372 600</a>
+        <a class="link-quiet" href="mailto:consult@solvephantasma.com">consult@solvephantasma.com</a>
+      </address>
+      <div class="site-footer__row site-footer__row--meta">
+        <p class="site-footer__tagline">Advertising platform and Marketplace automation.</p>
+        <a class="link-quiet" href="https://solvephantasma.com/terms.html">Terms</a>
+        <a class="link-quiet" href="https://solvephantasma.com/privacy.html">Privacy</a>
+        <p class="site-footer__copy">© Marketplenum 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="auth-modal" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title" hidden>
+    <div class="auth-modal__backdrop" data-close></div>
+    <div class="auth-modal__panel">
+      <button class="auth-modal__close" type="button" data-close aria-label="Close">✕</button>
+      <h2 class="auth-modal__title" id="auth-title"
+          data-title-login="Log in" data-title-signup="Create your account" data-title-forgot="Reset your password">Log in</h2>
+      <p class="auth-modal__sub">With Google, or with email and password. Your solvephantasma.com account works here too.</p>
+      <button class="btn auth-modal__google" type="button" id="auth-google"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1A6.6 6.6 0 0 1 5.5 12c0-.73.13-1.44.34-2.1V7.06H2.18A11 11 0 0 0 1 12c0 1.78.43 3.45 1.18 4.94l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.07.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>Continue with Google</button>
+      <p class="auth-modal__or" aria-hidden="true">or</p>
+      <form class="auth-modal__form" id="auth-form" novalidate data-mode="login"
+            data-msg-sending="One moment…"
+            data-msg-signup-sent="Almost done — check {email} and click the confirmation link."
+            data-msg-forgot-sent="Check {email} for a link to set a new password."
+            data-msg-bad-login="Email or password is wrong."
+            data-msg-exists="That email already has an account — log in instead."
+            data-msg-weak="Password must be at least 8 characters."
+            data-msg-unconfirmed="Please confirm your email first — check your inbox for the link."
+            data-msg-rate-limit="Too many emails sent in the last hour — please try again a little later."
+            data-msg-error="That didn't work — please try again.">
+        <label class="auth-modal__label" for="auth-email">Email address</label>
+        <input class="auth-modal__input" id="auth-email" type="email" name="email" autocomplete="email" required inputmode="email" />
+        <div class="auth-modal__pw" id="auth-pw-row">
+          <label class="auth-modal__label" for="auth-password">Password <small id="auth-pw-hint" hidden>(at least 8 characters)</small></label>
+          <input class="auth-modal__input" id="auth-password" type="password" name="password" autocomplete="current-password" minlength="8" required />
+          <button class="auth-modal__link" type="button" id="auth-forgot">Forgot password?</button>
+        </div>
+        <button class="btn btn-primary" type="submit" id="auth-submit"
+                data-label-login="Log in" data-label-signup="Create account" data-label-forgot="Send reset link">Log in</button>
+        <button class="auth-modal__link auth-modal__switch" type="button" id="auth-switch"
+                data-label-login="New here? Create an account" data-label-signup="Already have an account? Log in" data-label-forgot="Already have an account? Log in">New here? Create an account</button>
+      </form>
+      <p class="auth-modal__status" id="auth-status" role="status" aria-live="polite" hidden></p>
+    </div>
+  </div>
+
+  <!-- supabase-js (UMD) — must load before core.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.58.0/dist/umd/supabase.js" defer></script>
+  <script src="./core.js?v=20261120a" defer></script>
 </body>
 </html>

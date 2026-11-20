@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Marketplenum</title>
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="https://marketplenum.com/" />
+  <!-- The released apps send a signed-out visitor to ../services.html (the name
+       on the test site). Here it forwards to the front page and remembers the
+       app they came from, so core.js opens the login and returns them there. -->
+  <script>
+    try {
+      var r = document.referrer ? new URL(document.referrer) : null;
+      if (r && r.origin === location.origin && /^\/(campaigns|ecommerce)\//.test(r.pathname)) {
+        sessionStorage.setItem('mp_pending', r.pathname + r.hash);
+      }
+    } catch (e) { /* storage off: the front page still works */ }
+    location.replace('./');
+  </script>
+  <meta http-equiv="refresh" content="0; url=./" />
+</head>
+<body>
+  <p><a href="./">Marketplenum</a></p>
+</body>
+</html>
